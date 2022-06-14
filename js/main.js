@@ -1,4 +1,4 @@
-import KanbanAPI from "./KanbanAPI.js";
+// import KanbanAPI from "./KanbanAPI.js";
 
 // Insert
 // KanbanAPI.insertItem(2, "New Task");
@@ -12,3 +12,9 @@ import KanbanAPI from "./KanbanAPI.js";
 
 // Delete
 // KanbanAPI.deleteItem(101);
+
+import Kanban from './view/Kanban.js';
+
+new Kanban(
+    document.querySelector(".kanban")
+);
