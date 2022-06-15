@@ -1,4 +1,5 @@
 export default class KanbanAPI {
+    // Get Items
     static getItems(columnId) {
         const column = read().find(column => column.id == columnId);
         
@@ -9,6 +10,7 @@ export default class KanbanAPI {
         return column.items;
     }
     
+    // Create Item
     static insertItem(columnId, content) {
         const data = read();
         const column = data.find(column => column.id == columnId);
@@ -28,6 +30,7 @@ export default class KanbanAPI {
         return item;
     }
 
+    // Update Item
     static updateItem(itemId, newProps) {
         const data = read();
 
@@ -47,7 +50,7 @@ export default class KanbanAPI {
 
         item.content = newProps.content === undefined ? item.content : newProps.content;
 
-        // Update column & position
+        // Column & Row
         if (newProps.columnId !== undefined && newProps.position !== undefined) {
             const targetColumn = data.find(column => column.id == newProps.columnId);
             
@@ -77,6 +80,7 @@ export default class KanbanAPI {
     }
 }
 
+// Default Items
 function read() {
     const json = localStorage.getItem("kanban-data");
 
@@ -84,15 +88,18 @@ function read() {
         return [
             {
                 id: 1,
-                items: [{ "id": 123, "content": "Test Task" }]
+                items: [{ "id": 123, "content": "Task 1" }]
             },
             {
                 id: 2,
-                items: []
+                items: [{ "id": 456, "content": "Task 2" }]
             },
             {
                 id: 3,
-                items: []
+                items: [
+                    { "id": 789, "content": "Task 3" },
+                    { "id": 101, "content": "Task 4" }
+                ]
             }
         ]
     }
@@ -100,6 +107,7 @@ function read() {
     return JSON.parse(json);
 }
 
+// Save Items
 function save(data) {
     localStorage.setItem("kanban-data", JSON.stringify(data));
 }
