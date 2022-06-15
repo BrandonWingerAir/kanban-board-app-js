@@ -1,8 +1,11 @@
 import KanbanAPI from "../kanbanAPI.js";
+import GridLocation from "./GridLocation.js";
 import Item from "./Item.js";
 
 export default class Column {
     constructor(id, title) {
+        const gridLocationAbove = GridLocation.createGridLocation();
+
         this.elements = {};
         this.elements.root = Column.createRoot();
         this.elements.title = this.elements.root.querySelector(".kanban__column-title");
@@ -11,6 +14,7 @@ export default class Column {
 
         this.elements.root.dataset.id = id;
         this.elements.title.textContent = title;
+        this.elements.items.appendChild(gridLocationAbove);
 
         this.elements.addItem.addEventListener("click", () => {
             const newItem = KanbanAPI.insertItem(id, "");
