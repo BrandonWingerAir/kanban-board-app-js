@@ -30,7 +30,7 @@ export default class KanbanAPI {
         return item;
     }
 
-    // Update Item
+    // Edit Item
     static updateItem(itemId, newProps) {
         const data = read();
 
@@ -50,7 +50,7 @@ export default class KanbanAPI {
 
         item.content = newProps.content === undefined ? item.content : newProps.content;
 
-        // Column & Row
+        // Grid Location
         if (newProps.columnId !== undefined && newProps.position !== undefined) {
             const targetColumn = data.find(column => column.id == newProps.columnId);
             
@@ -65,6 +65,7 @@ export default class KanbanAPI {
         save(data);
     }
 
+    // Delete Item
     static deleteItem(itemId) {
         const data = read();
 

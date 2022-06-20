@@ -28,6 +28,26 @@ export default class Item {
                 content: this.content
             });
         };
+        
+        this.elements.root.addEventListener("click", () => {
+            const el = this.elements.input;
+            const selection = window.getSelection();
+            const range = document.createRange();
+            selection.removeAllRanges();
+            range.selectNodeContents(el);
+            range.collapse(false);
+            selection.addRange(range);
+            el.focus();
+        });
+
+        this.elements.input.addEventListener("keypress", e => {
+            var keycode = e.charCode || e.keyCode;
+
+            if (keycode === 13) {
+                e.preventDefault();
+                this.elements.input.blur();
+            }
+        });
 
         this.elements.input.addEventListener("blur", onBlur);
 
