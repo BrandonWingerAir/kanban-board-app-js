@@ -129,6 +129,19 @@ body {
     justify-content: flex-end;
 }
 
+/* Footer */
+footer {
+    text-align: center;
+}
+
+footer h2 {
+    font-size: 21px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
 /* Responsive Queries */
 @media only screen and (max-width: 900px) {
     .kanban {
@@ -170,7 +183,7 @@ body {
     .kanban {
         width: 250px;
         padding: 15px 20px;
-        margin: 15px auto;
+        margin: 45px auto;
     }
 
     .kanban__column-title {
@@ -179,5 +192,9 @@ body {
 
     .kanban__add-item {
         margin: 5px 0 10px;
-      }
+    }
+
+    .modal {
+        max-width: 300px;
+    }
 }
